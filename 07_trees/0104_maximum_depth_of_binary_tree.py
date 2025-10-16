@@ -39,12 +39,15 @@ class Solution:
         Time Complexity: O(n)
         Space Complexity: O(h) where h is height of tree
         """
+        # Base case: empty tree has depth 0
         if not root:
             return 0
         
+        # Recursively find depth of left and right subtrees
         left_depth = self.max_depth_recursive(root.left)
         right_depth = self.max_depth_recursive(root.right)
         
+        # Return max depth of subtrees plus current node
         return max(left_depth, right_depth) + 1
     
     def max_depth_iterative_dfs(self, root: Optional[TreeNode]) -> int:
@@ -53,16 +56,20 @@ class Solution:
         Time Complexity: O(n)
         Space Complexity: O(h) where h is height of tree
         """
+        # Handle empty tree
         if not root:
             return 0
         
+        # Stack stores (node, current_depth) pairs
         stack = [(root, 1)]
         max_depth = 0
         
         while stack:
             node, depth = stack.pop()
+            # Update maximum depth found so far
             max_depth = max(max_depth, depth)
             
+            # Add children to stack with incremented depth
             if node.left:
                 stack.append((node.left, depth + 1))
             if node.right:
@@ -76,6 +83,7 @@ class Solution:
         Time Complexity: O(n)
         Space Complexity: O(w) where w is maximum width of tree
         """
+        # Handle empty tree
         if not root:
             return 0
         
@@ -84,12 +92,15 @@ class Solution:
         depth = 0
         
         while queue:
+            # Process all nodes at current level
             level_size = len(queue)
             depth += 1
             
+            # Process each node in current level
             for _ in range(level_size):
                 node = queue.popleft()
                 
+                # Add children to queue for next level
                 if node.left:
                     queue.append(node.left)
                 if node.right:

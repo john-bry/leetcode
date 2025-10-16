@@ -34,6 +34,7 @@ class Solution:
         Time Complexity: O(n)
         Space Complexity: O(h) where h is height of tree
         """
+        # Base case: empty tree
         if not root:
             return None
         
@@ -41,7 +42,7 @@ class Solution:
         left = self.invert_tree_recursive(root.left)
         right = self.invert_tree_recursive(root.right)
         
-        # Swap the children
+        # Swap the children at current node
         root.left = right
         root.right = left
         
@@ -53,16 +54,18 @@ class Solution:
         Time Complexity: O(n)
         Space Complexity: O(h) where h is height of tree
         """
+        # Handle empty tree
         if not root:
             return None
         
+        # Use stack for DFS traversal
         stack = [root]
         while stack:
             node = stack.pop()
             if node:
-                # Swap children
+                # Swap children at current node
                 node.left, node.right = node.right, node.left
-                # Add children to stack
+                # Add children to stack for processing
                 stack.append(node.left)
                 stack.append(node.right)
         
@@ -74,17 +77,19 @@ class Solution:
         Time Complexity: O(n)
         Space Complexity: O(w) where w is maximum width of tree
         """
+        # Handle empty tree
         if not root:
             return None
         
+        # Use queue for BFS traversal (level by level)
         queue = deque([root])
         
         while queue:
             node = queue.popleft()
             if node:
-                # Swap children
+                # Swap children at current node
                 node.left, node.right = node.right, node.left
-                # Add children to queue
+                # Add children to queue for next level processing
                 if node.left:
                     queue.append(node.left)
                 if node.right:
