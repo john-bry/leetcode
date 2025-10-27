@@ -199,7 +199,7 @@ def test_solution():
     assert kth_largest5.add(-3) == -1, f"Test 5.1 failed: expected -1, got {kth_largest5.add(-3)}"
     assert kth_largest5.add(1) == 0, f"Test 5.2 failed: expected 0, got {kth_largest5.add(1)}"
     assert kth_largest5.add(-2) == 0, f"Test 5.3 failed: expected 0, got {kth_largest5.add(-2)}"
-    assert kth_largest5.add(-4) == -1, f"Test 5.4 failed: expected -1, got {kth_largest5.add(-4)}"
+    assert kth_largest5.add(-4) == 0, f"Test 5.4 failed: expected 0, got {kth_largest5.add(-4)}"
     assert kth_largest5.add(3) == 0, f"Test 5.5 failed: expected 0, got {kth_largest5.add(3)}"
     
     # Test case 6: Compare different approaches
