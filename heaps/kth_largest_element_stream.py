@@ -196,7 +196,7 @@ def test_solution():
     # Test case 5: Negative numbers
     print("Test 5: Negative numbers")
     kth_largest5 = KthLargest(2, [-1, 0, -2])
-    assert kth_largest5.add(-3) == -2, f"Test 5.1 failed: expected -2, got {kth_largest5.add(-3)}"
+    assert kth_largest5.add(-3) == -1, f"Test 5.1 failed: expected -1, got {kth_largest5.add(-3)}"
     assert kth_largest5.add(1) == 0, f"Test 5.2 failed: expected 0, got {kth_largest5.add(1)}"
     assert kth_largest5.add(-2) == 0, f"Test 5.3 failed: expected 0, got {kth_largest5.add(-2)}"
     assert kth_largest5.add(-4) == -1, f"Test 5.4 failed: expected -1, got {kth_largest5.add(-4)}"
