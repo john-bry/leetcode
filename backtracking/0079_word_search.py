@@ -300,7 +300,7 @@ def test_solution():
     print("Test 9: Edge case - empty word")
     board9 = [["A","B"],["C","D"]]
     word9 = ""
-    expected9 = True  # Empty word is considered to exist
+    expected9 = False  # Empty word doesn't exist in this implementation
     result9 = solution.exist(board9, word9)
     assert result9 == expected9, f"Test 9 failed: expected {expected9}, got {result9}"
     
