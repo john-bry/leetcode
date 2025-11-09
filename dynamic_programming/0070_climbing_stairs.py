@@ -67,6 +67,22 @@ class Solution:
         
         memo[n] = self.climb_stairs_memoization(n - 1, memo) + self.climb_stairs_memoization(n - 2, memo)
         return memo[n]
+
+    def climb_stairs_memoization_with_helper(self, n: int) -> int:
+        """
+        Approach 3: Recursive with Memoization and Helper Function
+        Time Complexity: O(n)
+        Space Complexity: O(n)
+        """
+        memo = {}
+        def helper(n: int) -> int:
+            if n in memo:
+                return memo[n]
+            if n <= 2:
+                return n
+            memo[n] = helper(n - 1) + helper(n - 2)
+            return memo[n]
+        return helper(n)
     
     def climb_stairs_tabulation(self, n: int) -> int:
         """
@@ -155,6 +171,39 @@ def test_solution():
     expected5 = 1
     result5 = solution.climb_stairs_optimized(n5)
     assert result5 == expected5, f"Test 5 failed: expected {expected5}, got {result5}"
+    
+    # Test case 6: Compare all approaches
+    print("Test 6: Compare all approaches")
+    test_n = 10
+    expected = 89
+    
+    result_recursive = solution.climb_stairs_recursive(test_n)
+    result_memo = solution.climb_stairs_memoization(test_n)
+    result_helper = solution.climb_stairs_memoization_with_helper(test_n)
+    result_tabulation = solution.climb_stairs_tabulation(test_n)
+    result_optimized = solution.climb_stairs_optimized(test_n)
+    result_fibonacci = solution.climb_stairs_fibonacci(test_n)
+    
+    assert result_memo == expected, f"Test 6.1 Memoization failed: expected {expected}, got {result_memo}"
+    assert result_helper == expected, f"Test 6.2 Helper memoization failed: expected {expected}, got {result_helper}"
+    assert result_tabulation == expected, f"Test 6.3 Tabulation failed: expected {expected}, got {result_tabulation}"
+    assert result_optimized == expected, f"Test 6.4 Optimized failed: expected {expected}, got {result_optimized}"
+    assert result_fibonacci == expected, f"Test 6.5 Fibonacci failed: expected {expected}, got {result_fibonacci}"
+    assert result_recursive == expected, f"Test 6.6 Recursive failed: expected {expected}, got {result_recursive}"
+    
+    # Test case 7: Larger values
+    print("Test 7: Larger values")
+    n7 = 20
+    expected7 = 10946
+    result7 = solution.climb_stairs_memoization_with_helper(n7)
+    assert result7 == expected7, f"Test 7 failed: expected {expected7}, got {result7}"
+    
+    # Test case 8: Edge case - maximum constraint
+    print("Test 8: Edge case - maximum constraint")
+    n8 = 45
+    expected8 = 1836311903
+    result8 = solution.climb_stairs_memoization_with_helper(n8)
+    assert result8 == expected8, f"Test 8 failed: expected {expected8}, got {result8}"
     
     print("All tests passed!")
 
