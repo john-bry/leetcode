@@ -284,7 +284,7 @@ def test_solution():
     # Test case 11: Large values
     print("Test 11: Large values")
     nums11 = [100, 200, 300, 100, 200]
-    expected11 = 500  # Rob houses 0, 2, 4
+    expected11 = 600  # Rob houses 0, 2, 4: 100 + 300 + 200 = 600
     result11 = solution.rob(nums11)
     assert result11 == expected11, f"Test 11 failed: expected {expected11}, got {result11}"
     
