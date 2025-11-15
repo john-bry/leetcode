@@ -85,7 +85,7 @@ class Solution:
         
         return False
     
-    def existWithVisitedSet(self, board: List[List[str]], word: str) -> bool:
+    def exist_with_visited_set(self, board: List[List[str]], word: str) -> bool:
         """
         Approach 2: DFS with Visited Set
         Time Complexity: O(m * n * 4^L)
@@ -127,7 +127,7 @@ class Solution:
         
         return False
     
-    def existOptimized(self, board: List[List[str]], word: str) -> bool:
+    def exist_optimized(self, board: List[List[str]], word: str) -> bool:
         """
         Approach 3: Optimized with Early Pruning
         Time Complexity: O(m * n * 4^L)
@@ -179,7 +179,7 @@ class Solution:
         
         return False
     
-    def existIterative(self, board: List[List[str]], word: str) -> bool:
+    def exist_iterative(self, board: List[List[str]], word: str) -> bool:
         """
         Approach 4: Iterative with Stack
         Time Complexity: O(m * n * 4^L)
@@ -286,9 +286,9 @@ def test_solution():
     test_word = "ABCCED"
     
     result_backtrack = solution.exist(test_board, test_word)
-    result_visited = solution.existWithVisitedSet(test_board, test_word)
-    result_opt = solution.existOptimized(test_board, test_word)
-    result_iter = solution.existIterative(test_board, test_word)
+    result_visited = solution.exist_with_visited_set(test_board, test_word)
+    result_opt = solution.exist_optimized(test_board, test_word)
+    result_iter = solution.exist_iterative(test_board, test_word)
     
     expected = True
     assert result_backtrack == expected, f"Test 8.1 backtrack failed: expected {expected}, got {result_backtrack}"

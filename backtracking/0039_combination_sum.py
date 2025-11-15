@@ -42,7 +42,7 @@ from typing import List
 
 
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combination_sum(self, candidates: List[int], target: int) -> List[List[int]]:
         """
         Approach 1: Backtracking (Optimal)
         Time Complexity: O(2^target) - exponential due to unlimited reuse
@@ -78,7 +78,7 @@ class Solution:
         backtrack(0, [], target)
         return result
     
-    def combinationSumDP(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combination_sum_dp(self, candidates: List[int], target: int) -> List[List[int]]:
         """
         Approach 2: Dynamic Programming
         Time Complexity: O(target * candidates.length * combinations)
@@ -97,7 +97,7 @@ class Solution:
         
         return dp[target]
     
-    def combinationSumIterative(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combination_sum_iterative(self, candidates: List[int], target: int) -> List[List[int]]:
         """
         Approach 3: Iterative with Stack
         Time Complexity: O(2^target)
@@ -126,7 +126,7 @@ class Solution:
         
         return result
     
-    def combinationSumOptimized(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combination_sum_optimized(self, candidates: List[int], target: int) -> List[List[int]]:
         """
         Approach 4: Optimized Backtracking with Early Pruning
         Time Complexity: O(2^target)
@@ -168,7 +168,7 @@ def test_solution():
     candidates1 = [2, 3, 6, 7]
     target1 = 7
     expected1 = [[2, 2, 3], [7]]
-    result1 = solution.combinationSum(candidates1, target1)
+    result1 = solution.combination_sum(candidates1, target1)
     # Sort both for comparison since order doesn't matter
     result1.sort()
     expected1.sort()
@@ -179,7 +179,7 @@ def test_solution():
     candidates2 = [2, 3, 5]
     target2 = 8
     expected2 = [[2, 2, 2, 2], [2, 3, 3], [3, 5]]
-    result2 = solution.combinationSum(candidates2, target2)
+    result2 = solution.combination_sum(candidates2, target2)
     result2.sort()
     expected2.sort()
     assert result2 == expected2, f"Test 2 failed: expected {expected2}, got {result2}"
@@ -189,7 +189,7 @@ def test_solution():
     candidates3 = [2]
     target3 = 1
     expected3 = []
-    result3 = solution.combinationSum(candidates3, target3)
+    result3 = solution.combination_sum(candidates3, target3)
     assert result3 == expected3, f"Test 3 failed: expected {expected3}, got {result3}"
     
     # Test case 4: Single element solution
@@ -197,7 +197,7 @@ def test_solution():
     candidates4 = [1]
     target4 = 1
     expected4 = [[1]]
-    result4 = solution.combinationSum(candidates4, target4)
+    result4 = solution.combination_sum(candidates4, target4)
     assert result4 == expected4, f"Test 4 failed: expected {expected4}, got {result4}"
     
     # Test case 5: Large target
@@ -205,7 +205,7 @@ def test_solution():
     candidates5 = [2, 3, 5]
     target5 = 8
     expected5 = [[2, 2, 2, 2], [2, 3, 3], [3, 5]]
-    result5 = solution.combinationSum(candidates5, target5)
+    result5 = solution.combination_sum(candidates5, target5)
     result5.sort()
     expected5.sort()
     assert result5 == expected5, f"Test 5 failed: expected {expected5}, got {result5}"
@@ -215,10 +215,10 @@ def test_solution():
     test_candidates = [2, 3, 6, 7]
     test_target = 7
     
-    result_backtrack = solution.combinationSum(test_candidates, test_target)
-    result_dp = solution.combinationSumDP(test_candidates, test_target)
-    result_iter = solution.combinationSumIterative(test_candidates, test_target)
-    result_opt = solution.combinationSumOptimized(test_candidates, test_target)
+    result_backtrack = solution.combination_sum(test_candidates, test_target)
+    result_dp = solution.combination_sumDP(test_candidates, test_target)
+    result_iter = solution.combination_sumIterative(test_candidates, test_target)
+    result_opt = solution.combination_sumOptimized(test_candidates, test_target)
     
     expected = [[2, 2, 3], [7]]
     for result in [result_backtrack, result_dp, result_iter, result_opt]:
@@ -231,7 +231,7 @@ def test_solution():
     candidates7 = [2, 3, 4]
     target7 = 2
     expected7 = [[2]]
-    result7 = solution.combinationSum(candidates7, target7)
+    result7 = solution.combination_sum(candidates7, target7)
     assert result7 == expected7, f"Test 7 failed: expected {expected7}, got {result7}"
     
     # Test case 8: Edge case - all candidates larger than target
@@ -239,7 +239,7 @@ def test_solution():
     candidates8 = [5, 6, 7]
     target8 = 3
     expected8 = []
-    result8 = solution.combinationSum(candidates8, target8)
+    result8 = solution.combination_sum(candidates8, target8)
     assert result8 == expected8, f"Test 8 failed: expected {expected8}, got {result8}"
     
     # Test case 9: Single candidate used multiple times
@@ -247,7 +247,7 @@ def test_solution():
     candidates9 = [3]
     target9 = 9
     expected9 = [[3, 3, 3]]
-    result9 = solution.combinationSum(candidates9, target9)
+    result9 = solution.combination_sum(candidates9, target9)
     assert result9 == expected9, f"Test 9 failed: expected {expected9}, got {result9}"
     
     # Test case 10: Complex scenario
@@ -255,7 +255,7 @@ def test_solution():
     candidates10 = [2, 3, 4, 5]
     target10 = 10
     expected10 = [[2, 2, 2, 2, 2], [2, 2, 2, 4], [2, 2, 3, 3], [2, 3, 5], [2, 4, 4], [3, 3, 4], [5, 5]]
-    result10 = solution.combinationSum(candidates10, target10)
+    result10 = solution.combination_sum(candidates10, target10)
     result10.sort()
     expected10.sort()
     assert result10 == expected10, f"Test 10 failed: expected {expected10}, got {result10}"

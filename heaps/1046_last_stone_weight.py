@@ -46,7 +46,7 @@ from typing import List
 
 
 class Solution:
-    def lastStoneWeight(self, stones: List[int]) -> int:
+    def last_stone_weight(self, stones: List[int]) -> int:
         """
         Approach 1: Max Heap (Optimal)
         Time Complexity: O(n log n)
@@ -67,7 +67,7 @@ class Solution:
         
         return -max_heap[0] if max_heap else 0
     
-    def lastStoneWeightSorting(self, stones: List[int]) -> int:
+    def last_stone_weight_sorting(self, stones: List[int]) -> int:
         """
         Approach 2: Sorting (Alternative)
         Time Complexity: O(n² log n) - sorting n times
@@ -85,7 +85,7 @@ class Solution:
         
         return stones[0] if stones else 0
     
-    def lastStoneWeightSimulation(self, stones: List[int]) -> int:
+    def last_stone_weight_simulation(self, stones: List[int]) -> int:
         """
         Approach 3: Simulation with List Operations
         Time Complexity: O(n² log n) - finding max n times
@@ -105,7 +105,7 @@ class Solution:
         
         return stones[0] if stones else 0
     
-    def lastStoneWeightOptimized(self, stones: List[int]) -> int:
+    def last_stone_weight_optimized(self, stones: List[int]) -> int:
         """
         Approach 4: Optimized Max Heap with Early Termination
         Time Complexity: O(n log n)
@@ -140,59 +140,59 @@ def test_solution():
     print("Test 1: Basic functionality")
     stones1 = [2, 7, 4, 1, 8, 1]
     expected1 = 1
-    result1 = solution.lastStoneWeight(stones1)
+    result1 = solution.last_stone_weight(stones1)
     assert result1 == expected1, f"Test 1 failed: expected {expected1}, got {result1}"
     
     # Test case 2: Single stone
     print("Test 2: Single stone")
     stones2 = [1]
     expected2 = 1
-    result2 = solution.lastStoneWeight(stones2)
+    result2 = solution.last_stone_weight(stones2)
     assert result2 == expected2, f"Test 2 failed: expected {expected2}, got {result2}"
     
     # Test case 3: Two equal stones
     print("Test 3: Two equal stones")
     stones3 = [2, 2]
     expected3 = 0
-    result3 = solution.lastStoneWeight(stones3)
+    result3 = solution.last_stone_weight(stones3)
     assert result3 == expected3, f"Test 3 failed: expected {expected3}, got {result3}"
     
     # Test case 4: All stones equal
     print("Test 4: All stones equal")
     stones4 = [3, 3, 3, 3]
     expected4 = 0
-    result4 = solution.lastStoneWeight(stones4)
+    result4 = solution.last_stone_weight(stones4)
     assert result4 == expected4, f"Test 4 failed: expected {expected4}, got {result4}"
     
     # Test case 5: Descending order
     print("Test 5: Descending order")
     stones5 = [5, 4, 3, 2, 1]
     expected5 = 1
-    result5 = solution.lastStoneWeight(stones5)
+    result5 = solution.last_stone_weight(stones5)
     assert result5 == expected5, f"Test 5 failed: expected {expected5}, got {result5}"
     
     # Test case 6: Ascending order
     print("Test 6: Ascending order")
     stones6 = [1, 2, 3, 4, 5]
     expected6 = 1
-    result6 = solution.lastStoneWeight(stones6)
+    result6 = solution.last_stone_weight(stones6)
     assert result6 == expected6, f"Test 6 failed: expected {expected6}, got {result6}"
     
     # Test case 7: Large numbers
     print("Test 7: Large numbers")
     stones7 = [1000, 999, 998, 997]
     expected7 = 0
-    result7 = solution.lastStoneWeight(stones7)
+    result7 = solution.last_stone_weight(stones7)
     assert result7 == expected7, f"Test 7 failed: expected {expected7}, got {result7}"
     
     # Test case 8: Compare different approaches
     print("Test 8: Compare different approaches")
     test_stones = [2, 7, 4, 1, 8, 1]
     
-    result_heap = solution.lastStoneWeight(test_stones)
-    result_sort = solution.lastStoneWeightSorting(test_stones.copy())
-    result_sim = solution.lastStoneWeightSimulation(test_stones.copy())
-    result_opt = solution.lastStoneWeightOptimized(test_stones.copy())
+    result_heap = solution.last_stone_weight(test_stones)
+    result_sort = solution.last_stone_weightSorting(test_stones.copy())
+    result_sim = solution.last_stone_weightSimulation(test_stones.copy())
+    result_opt = solution.last_stone_weightOptimized(test_stones.copy())
     
     expected = 1
     assert result_heap == expected, f"Test 8.1 heap failed: expected {expected}, got {result_heap}"
@@ -204,14 +204,14 @@ def test_solution():
     print("Test 9: Edge case - empty array")
     stones9 = []
     expected9 = 0
-    result9 = solution.lastStoneWeight(stones9)
+    result9 = solution.last_stone_weight(stones9)
     assert result9 == expected9, f"Test 9 failed: expected {expected9}, got {result9}"
     
     # Test case 10: Complex scenario
     print("Test 10: Complex scenario")
     stones10 = [1, 3, 2, 4, 5, 6, 7, 8, 9, 10]
     expected10 = 1
-    result10 = solution.lastStoneWeight(stones10)
+    result10 = solution.last_stone_weight(stones10)
     assert result10 == expected10, f"Test 10 failed: expected {expected10}, got {result10}"
     
     print("All tests passed!")

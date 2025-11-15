@@ -44,7 +44,7 @@ from typing import List
 
 
 class Solution:
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+    def two_sum(self, numbers: List[int], target: int) -> List[int]:
         """
         Approach 1: Two Pointers (Optimal)
         Time Complexity: O(n)
@@ -67,7 +67,7 @@ class Solution:
         
         return []  # Should never reach here given problem constraints
     
-    def twoSumBinarySearch(self, numbers: List[int], target: int) -> List[int]:
+    def two_sum_binary_search(self, numbers: List[int], target: int) -> List[int]:
         """
         Approach 2: Binary Search
         Time Complexity: O(n log n)
@@ -91,7 +91,7 @@ class Solution:
         
         return []
     
-    def twoSumHashMap(self, numbers: List[int], target: int) -> List[int]:
+    def two_sum_hash_map(self, numbers: List[int], target: int) -> List[int]:
         """
         Approach 3: Hash Map (Not optimal for this problem)
         Time Complexity: O(n)
@@ -110,7 +110,7 @@ class Solution:
         
         return []
     
-    def twoSumOptimized(self, numbers: List[int], target: int) -> List[int]:
+    def two_sum_optimized(self, numbers: List[int], target: int) -> List[int]:
         """
         Approach 4: Optimized Two Pointers with Early Termination
         Time Complexity: O(n)
@@ -148,7 +148,7 @@ def test_solution():
     numbers1 = [2, 7, 11, 15]
     target1 = 9
     expected1 = [1, 2]
-    result1 = solution.twoSum(numbers1, target1)
+    result1 = solution.two_sum(numbers1, target1)
     assert result1 == expected1, f"Test 1 failed: expected {expected1}, got {result1}"
     
     # Test case 2: Different target
@@ -156,7 +156,7 @@ def test_solution():
     numbers2 = [2, 3, 4]
     target2 = 6
     expected2 = [1, 3]
-    result2 = solution.twoSum(numbers2, target2)
+    result2 = solution.two_sum(numbers2, target2)
     assert result2 == expected2, f"Test 2 failed: expected {expected2}, got {result2}"
     
     # Test case 3: Negative numbers
@@ -164,7 +164,7 @@ def test_solution():
     numbers3 = [-1, 0]
     target3 = -1
     expected3 = [1, 2]
-    result3 = solution.twoSum(numbers3, target3)
+    result3 = solution.two_sum(numbers3, target3)
     assert result3 == expected3, f"Test 3 failed: expected {expected3}, got {result3}"
     
     # Test case 4: Large numbers
@@ -172,7 +172,7 @@ def test_solution():
     numbers4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     target4 = 19
     expected4 = [9, 10]
-    result4 = solution.twoSum(numbers4, target4)
+    result4 = solution.two_sum(numbers4, target4)
     assert result4 == expected4, f"Test 4 failed: expected {expected4}, got {result4}"
     
     # Test case 5: Duplicate numbers
@@ -180,7 +180,7 @@ def test_solution():
     numbers5 = [1, 1, 2, 2, 3, 3]
     target5 = 4
     expected5 = [1, 6]
-    result5 = solution.twoSum(numbers5, target5)
+    result5 = solution.two_sum(numbers5, target5)
     assert result5 == expected5, f"Test 5 failed: expected {expected5}, got {result5}"
     
     # Test case 6: Small array
@@ -188,7 +188,7 @@ def test_solution():
     numbers6 = [1, 2]
     target6 = 3
     expected6 = [1, 2]
-    result6 = solution.twoSum(numbers6, target6)
+    result6 = solution.two_sum(numbers6, target6)
     assert result6 == expected6, f"Test 6 failed: expected {expected6}, got {result6}"
     
     # Test case 7: Compare different approaches
@@ -196,10 +196,10 @@ def test_solution():
     test_numbers = [2, 7, 11, 15]
     test_target = 9
     
-    result_two_pointers = solution.twoSum(test_numbers, test_target)
-    result_binary = solution.twoSumBinarySearch(test_numbers, test_target)
-    result_hash = solution.twoSumHashMap(test_numbers, test_target)
-    result_opt = solution.twoSumOptimized(test_numbers, test_target)
+    result_two_pointers = solution.two_sum(test_numbers, test_target)
+    result_binary = solution.two_sumBinarySearch(test_numbers, test_target)
+    result_hash = solution.two_sumHashMap(test_numbers, test_target)
+    result_opt = solution.two_sumOptimized(test_numbers, test_target)
     
     expected = [1, 2]
     assert result_two_pointers == expected, f"Test 7.1 two pointers failed: expected {expected}, got {result_two_pointers}"
@@ -212,7 +212,7 @@ def test_solution():
     numbers8 = [1, 2]
     target8 = 3
     expected8 = [1, 2]
-    result8 = solution.twoSum(numbers8, target8)
+    result8 = solution.two_sum(numbers8, target8)
     assert result8 == expected8, f"Test 8 failed: expected {expected8}, got {result8}"
     
     # Test case 9: Negative target
@@ -220,7 +220,7 @@ def test_solution():
     numbers9 = [-3, -2, -1, 0, 1, 2, 3]
     target9 = -5
     expected9 = [1, 2]
-    result9 = solution.twoSum(numbers9, target9)
+    result9 = solution.two_sum(numbers9, target9)
     assert result9 == expected9, f"Test 9 failed: expected {expected9}, got {result9}"
     
     # Test case 10: Large array
@@ -228,7 +228,7 @@ def test_solution():
     numbers10 = list(range(1, 1001))
     target10 = 1999
     expected10 = [999, 1000]
-    result10 = solution.twoSum(numbers10, target10)
+    result10 = solution.two_sum(numbers10, target10)
     assert result10 == expected10, f"Test 10 failed: expected {expected10}, got {result10}"
     
     print("All tests passed!")

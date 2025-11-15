@@ -50,7 +50,7 @@ from helpers import print_linked_list
 
 
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def remove_nth_from_end(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         """
         Remove the nth node from the end of the linked list.
         
@@ -149,7 +149,7 @@ def run_test_case(test_case, solution):
     print_linked_list(head)
     
     # Apply the solution
-    result_head = solution.removeNthFromEnd(head, test_case["n"])
+    result_head = solution.remove_nth_from_end(head, test_case["n"])
     
     # Convert result back to list
     result = result_head.to_list() if result_head else []

@@ -69,7 +69,7 @@ class Solution:
         
         return helper(0)
     
-    def robRecursive(self, nums: List[int]) -> int:
+    def rob_recursive(self, nums: List[int]) -> int:
         """
         Approach 2: Recursive (Without Memoization)
         Time Complexity: O(2^n) - exponential, very slow
@@ -92,7 +92,7 @@ class Solution:
         
         return helper(len(nums) - 1)
     
-    def robTabulation(self, nums: List[int]) -> int:
+    def rob_tabulation(self, nums: List[int]) -> int:
         """
         Approach 3: Tabulation (Bottom-up DP)
         Time Complexity: O(n)
@@ -115,7 +115,7 @@ class Solution:
         
         return dp[n - 1]
     
-    def robOptimized(self, nums: List[int]) -> int:
+    def rob_optimized(self, nums: List[int]) -> int:
         """
         Approach 4: Space-Optimized DP (Optimal)
         Time Complexity: O(n)
@@ -139,7 +139,7 @@ class Solution:
         
         return prev1
     
-    def robIterative(self, nums: List[int]) -> int:
+    def rob_iterative(self, nums: List[int]) -> int:
         """
         Approach 5: Iterative with Two Variables
         Time Complexity: O(n)
@@ -159,7 +159,7 @@ class Solution:
         
         return rob_current
     
-    def robMemoizationHelper(self, nums: List[int]) -> int:
+    def rob_memoization_helper(self, nums: List[int]) -> int:
         """
         Approach 6: Memoization with Helper Function (Cleaner)
         Time Complexity: O(n)
@@ -259,14 +259,14 @@ def test_solution():
     
     for nums in test_cases:
         result1 = solution.rob(nums)
-        result2 = solution.robTabulation(nums)
-        result3 = solution.robOptimized(nums)
-        result4 = solution.robIterative(nums)
-        result5 = solution.robMemoizationHelper(nums)
+        result2 = solution.rob_tabulation(nums)
+        result3 = solution.rob_optimized(nums)
+        result4 = solution.rob_iterative(nums)
+        result5 = solution.rob_memoization_helper(nums)
         
         # Skip recursive for larger inputs (too slow)
         if len(nums) <= 5:
-            result6 = solution.robRecursive(nums)
+            result6 = solution.rob_recursive(nums)
             assert result1 == result6, f"Recursive mismatch for {nums}"
         
         assert result1 == result2, f"Tabulation mismatch for {nums}: {result1} vs {result2}"
