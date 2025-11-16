@@ -144,7 +144,7 @@ class Solution:
         if not s:
             return ""
         
-        def expand_around_center(left: int, right: int) -> tuple:
+        def expand_substring(left: int, right: int) -> tuple:
             """Returns (start, length) of longest palindrome from center"""
             while left >= 0 and right < len(s) and s[left] == s[right]:
                 left -= 1
@@ -158,9 +158,9 @@ class Solution:
         
         for i in range(len(s)):
             # Check odd-length palindromes (center at i)
-            start1, len1 = expand_around_center(i, i)
+            start1, len1 = expand_substring(i, i)
             # Check even-length palindromes (center between i and i+1)
-            start2, len2 = expand_around_center(i, i + 1)
+            start2, len2 = expand_substring(i, i + 1)
             
             if len1 > max_len:
                 start, max_len = start1, len1
