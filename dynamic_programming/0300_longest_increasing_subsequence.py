@@ -94,23 +94,23 @@ class Solution:
         
         memo = {}
         
-        def lis_ending_at(i):
-            if i in memo:
-                return memo[i]
-            
+        def dp(end):
+            # Base case: reached start of array
+            if end == 0:
+                return 1
+            # Check memoization
+            if end in memo:
+                return memo[end]
+            # Try all possible starting positions
             max_len = 1
-            for j in range(i):
-                if nums[j] < nums[i]:
-                    max_len = max(max_len, lis_ending_at(j) + 1)
-            
-            memo[i] = max_len
+            for start in range(end):
+                if nums[start] < nums[end]:
+                    max_len = max(max_len, dp(start) + 1)
+            # Store result in memo
+            memo[end] = max_len
             return max_len
         
-        result = 0
-        for i in range(len(nums)):
-            result = max(result, lis_ending_at(i))
-        
-        return result
+        return max(dp(end) for end in range(len(nums)))
     
     def length_of_lis_greedy(self, nums: List[int]) -> int:
         """
