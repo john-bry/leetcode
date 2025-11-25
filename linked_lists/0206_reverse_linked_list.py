@@ -35,9 +35,14 @@ Notes:
 - Edge cases: Empty list, single node, two nodes
 """
 
+import os
+import sys
 from typing import Optional
 
-from utils.data_structures import ListNode
+# Add the utils directory to the path so we can import our data structures
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'utils'))
+
+from data_structures import ListNode
 
 
 class Solution:
