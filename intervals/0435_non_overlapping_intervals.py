@@ -250,7 +250,7 @@ def test_solution():
     # Test case 5: All overlap
     print("Test 5: All overlap [[1,10],[2,3],[4,5],[6,7]]")
     intervals5 = [[1,10],[2,3],[4,5],[6,7]]
-    expected5 = 2  # Keep [2,3], remove others
+    expected5 = 1  # Keep [2,3],[4,5],[6,7], remove [1,10]
     result5 = solution.eraseOverlapIntervals(intervals5)
     assert result5 == expected5, f"Test 5 failed: expected {expected5}, got {result5}"
     print(f"  Result: {result5} ✓")
@@ -333,7 +333,7 @@ def test_solution():
     # Test case 13: Negative values
     print("Test 13: Negative values [[-5,-1],[-3,0],[-2,1]]")
     intervals13 = [[-5,-1],[-3,0],[-2,1]]
-    expected13 = 1  # Remove one overlapping interval
+    expected13 = 2  # All three overlap, keep one ([-5,-1]), remove two
     result13 = solution.eraseOverlapIntervals(intervals13)
     assert result13 == expected13, f"Test 13 failed: expected {expected13}, got {result13}"
     print(f"  Result: {result13} ✓")
@@ -346,11 +346,10 @@ def test_solution():
     assert result14 == expected14, f"Test 14 failed: expected {expected14}, got {result14}"
     print(f"  Result: {result14} ✓")
     
-    # Test case 15: Zero-length intervals (edge case - shouldn't happen per constraints)
-    print("Test 15: Same start and end [[1,1],[1,1],[1,1]]")
-    intervals15 = [[1,1],[1,1],[1,1]]
-    # Note: Per constraints, start < end, but testing edge case
-    expected15 = 2  # Keep one, remove two
+    # Test case 15: Very close intervals
+    print("Test 15: Very close intervals [[1,2],[1,2],[2,3]]")
+    intervals15 = [[1,2],[1,2],[2,3]]
+    expected15 = 1  # Remove one duplicate [1,2], keep [1,2] and [2,3]
     result15 = solution.eraseOverlapIntervals(intervals15)
     assert result15 == expected15, f"Test 15 failed: expected {expected15}, got {result15}"
     print(f"  Result: {result15} ✓")
