@@ -57,6 +57,83 @@ class Solution:
 
         result = dp(amount)
         return result if result != float('inf') else -1
+    
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        """
+        Approach 2: Bottom-Up DP (Tabulation) - Simpler and More Intuitive
+        Time Complexity: O(n * m) where n is amount, m is number of coin types
+        Space Complexity: O(n) for DP array
+        
+        Build solution from bottom up. For each amount from 0 to target,
+        find minimum coins needed using previously computed values.
+        """
+        if amount < 0:
+            return -1
+        if amount == 0:
+            return 0
+        
+        # dp[i] = minimum coins needed to make amount i
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0  # Base case: 0 coins needed for amount 0
+        
+        # For each amount from 1 to target
+        for i in range(1, amount + 1):
+            # Try each coin
+            for coin in coins:
+                if coin > 0 and i >= coin:
+                    # If we can use this coin, update minimum
+                    dp[i] = min(dp[i], 1 + dp[i - coin])
+        
+        return dp[amount] if dp[amount] != float('inf') else -1
+    
+    def coinChangeSimplified(self, coins: List[int], amount: int) -> int:
+        """
+        Approach 3: Simplified Bottom-Up DP
+        Time Complexity: O(n * m)
+        Space Complexity: O(n)
+        
+        Cleaner version with less edge case handling upfront.
+        """
+        # Initialize DP array: dp[i] = min coins for amount i
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0
+        
+        # Build solution bottom-up
+        for i in range(1, amount + 1):
+            for coin in coins:
+                if i >= coin:
+                    dp[i] = min(dp[i], dp[i - coin] + 1)
+        
+        return dp[amount] if dp[amount] != float('inf') else -1
+    
+    def coinChangeClean(self, coins: List[int], amount: int) -> int:
+        """
+        Approach 4: Clean Top-Down with Simpler Logic
+        Time Complexity: O(n * m)
+        Space Complexity: O(n)
+        
+        Simpler version of memoization approach.
+        """
+        memo = {}
+        
+        def dp(remaining: int) -> int:
+            if remaining < 0:
+                return -1
+            if remaining == 0:
+                return 0
+            if remaining in memo:
+                return memo[remaining]
+            
+            min_coins = float('inf')
+            for coin in coins:
+                res = dp(remaining - coin)
+                if res != -1:
+                    min_coins = min(min_coins, res + 1)
+            
+            memo[remaining] = min_coins if min_coins != float('inf') else -1
+            return memo[remaining]
+        
+        return dp(amount)
 
 
 # Test cases and examples
@@ -153,6 +230,31 @@ if __name__ == "__main__":
     result = solution.coin_change([5], 12)
     print(f"Result: {result}")
     print(f"Verification: {'✓' if result == -1 else '✗'}")
+    
+    print("\n" + "=" * 60)
+    print("Testing All Approaches")
+    print("=" * 60)
+    
+    # Test all approaches return same results
+    test_cases = [
+        ([1, 2, 5], 11),
+        ([2], 3),
+        ([1, 2, 5], 0),
+        ([1, 3, 4], 6),
+        ([5], 15),
+        ([5], 12),
+    ]
+    
+    for coins, amt in test_cases:
+        result1 = solution.coin_change(coins, amt)
+        result2 = solution.coinChange(coins, amt)
+        result3 = solution.coinChangeSimplified(coins, amt)
+        result4 = solution.coinChangeClean(coins, amt)
+        
+        assert result1 == result2 == result3 == result4, \
+            f"Mismatch for coins={coins}, amount={amt}: {result1} vs {result2} vs {result3} vs {result4}"
+    
+    print("✓ All approaches produce same results!")
     
     print("\n" + "=" * 60)
     print("All test cases completed!")
