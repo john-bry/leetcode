@@ -1,25 +1,21 @@
+from typing import List
+
 class Solution:
     """
     Time Complexity: O(n)
     Space Complexity: O(n)
     """
-    def partition_string(self, s: str) -> List[str]:
+    def string_string(self, s: str) -> List[str]:
         seen = set()
-        partition = ''
-        partitions = []
+        result = []
+        start = 0
 
-        for char in s:
-            partition += char
+        for i in range(len(s)):
+            string = s[start:i+1]
 
-            if partition not in seen:
-                seen.add(partition)
-                partitions.append(partition)
-                partition = ''
+            if string not in seen:
+                seen.add(string)
+                result.append(string)
+                start = i + 1
 
-        return partitions
-
-
-
-            
-
-            
+        return result
