@@ -60,6 +60,7 @@ class Solution:
                 while cur + 1 in num_set:
                     cur += 1
                     cur_len += 1
+                    
                 longest = max(longest, cur_len)
 
         return longest
