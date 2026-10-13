@@ -53,6 +53,22 @@ class Solution:
             seen[num] = True
 
         return False
+
+    def contains_duplicate_hash_set(self, nums: List[int]) -> bool:
+        """
+        Approach: Hash Set (Early Exit)
+        Time Complexity: O(n)
+        Space Complexity: O(n)
+        """
+        seen = set()
+
+        for num in nums:
+            if num in seen:
+                return True
+
+            seen.add(num)
+
+        return False
     
     def contains_duplicate_set(self, nums: List[int]) -> bool:
         """
@@ -108,6 +124,37 @@ def test_solution():
     result5 = solution.contains_duplicate(nums5)
     expected5 = True
     assert result5 == expected5, f"Test 5 failed: expected {expected5}, got {result5}"
+    
+    # Test cases for contains_duplicate_hash_set
+    # Test case 1
+    nums1 = [1, 2, 3, 1]
+    result1 = solution.contains_duplicate_hash_set(nums1)
+    expected1 = True
+    assert result1 == expected1, f"Hash set test 1 failed: expected {expected1}, got {result1}"
+    
+    # Test case 2
+    nums2 = [1, 2, 3, 4]
+    result2 = solution.contains_duplicate_hash_set(nums2)
+    expected2 = False
+    assert result2 == expected2, f"Hash set test 2 failed: expected {expected2}, got {result2}"
+    
+    # Test case 3
+    nums3 = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
+    result3 = solution.contains_duplicate_hash_set(nums3)
+    expected3 = True
+    assert result3 == expected3, f"Hash set test 3 failed: expected {expected3}, got {result3}"
+    
+    # Test case 4 - single element
+    nums4 = [1]
+    result4 = solution.contains_duplicate_hash_set(nums4)
+    expected4 = False
+    assert result4 == expected4, f"Hash set test 4 failed: expected {expected4}, got {result4}"
+    
+    # Test case 5 - two identical elements
+    nums5 = [1, 1]
+    result5 = solution.contains_duplicate_hash_set(nums5)
+    expected5 = True
+    assert result5 == expected5, f"Hash set test 5 failed: expected {expected5}, got {result5}"
     
     print("All tests passed!")
 
